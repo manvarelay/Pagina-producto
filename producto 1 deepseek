@@ -7,6 +7,7 @@
   <meta name="description" content="Pantalón cargo urbano slim fit para adulto. Tela resistente, ideal para invierno. Contacta al vendedor por WhatsApp.">
   <meta name="keywords" content="pantalón cargo, moda urbana, ropa hombre, slim fit, invierno">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --bg-dark: #1e1e1e;
@@ -18,8 +19,8 @@
       --whatsapp-hover: #128C7E;
       --button-bg: #3498db;
       --button-hover: #2980b9;
-      --call-blue: #128C7E; /* Color azul para el botón de llamada */
-      --call-blue-hover: #075E54; /* Color azul más oscuro para hover */
+      --call-blue: #128C7E;
+      --call-blue-hover: #075E54;
     }
 
     body {
@@ -164,7 +165,9 @@
       border-radius: 30px;
       text-decoration: none;
       font-weight: bold;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       transition: background-color 0.3s, transform 0.2s;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
@@ -185,6 +188,10 @@
     .call-btn:hover {
       background-color: var(--call-blue-hover);
       transform: translateY(-2px);
+    }
+
+    .btn-icon {
+      font-size: 1.2em;
     }
 
     .tags {
@@ -353,7 +360,7 @@
       <img src="pantalon-principal.jpg" alt="Pantalón cargo slim fit de color negro, vista frontal" loading="lazy">
     </div>
 
-    <h2>Pantalón Cargo Slim Fit</h2>
+    <h2 id="product-title">Pantalón Cargo Slim Fit</h2>
 
     <div class="atributos">
       <span>Edad: Adulto</span>
@@ -366,8 +373,12 @@
     </div>
 
     <div class="contact-buttons">
-      <a href="https://wa.me/56912345678?text=Hola,%20me%20interesa%20el%20pantalón%20cargo%20slim%20fit" class="whatsapp-btn" target="_blank" aria-label="Contactar por WhatsApp">Contactar por WhatsApp</a>
-      <a href="https://wa.me/56912345678?text=Hola,%20necesito%20que%20me%20llames%20por%20teléfono" class="call-btn" target="_blank" aria-label="Llamar por WhatsApp">Llamame</a>
+      <a href="#" class="whatsapp-btn" target="_blank" aria-label="Contactar por WhatsApp" id="whatsapp-btn">
+        <i class="fab fa-whatsapp btn-icon"></i> Contactar por WhatsApp
+      </a>
+      <a href="#" class="call-btn" target="_blank" aria-label="Llamar por WhatsApp" id="call-btn">
+        <i class="fas fa-phone-alt btn-icon"></i> Llamame
+      </a>
     </div>
 
     <div class="tags">
@@ -390,18 +401,18 @@
     </div>
 
     <div class="publicar">
-      <a href="https://wa.me/56912345678?text=Hola,%20quiero%20publicar%20mi%20producto" aria-label="Publicar mi producto">Publicar mi producto</a>
+      <a href="#" aria-label="Publicar mi producto" id="publish-btn">Publicar mi producto</a>
     </div>
 
     <div class="social-share">
-      <a href="https://www.facebook.com/sharer/sharer.php?u=URL_PAGINA" aria-label="Compartir en Facebook">f</a>
-      <a href="https://twitter.com/intent/tweet?text=Mira%20este%20pantalón%20cargo&url=URL_PAGINA" aria-label="Compartir en Twitter">t</a>
-      <a href="whatsapp://send?text=Mira%20este%20pantalón%20cargo:%20URL_PAGINA" aria-label="Compartir en WhatsApp">w</a>
+      <a href="#" aria-label="Compartir en Facebook" id="facebook-share"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Compartir en Twitter" id="twitter-share"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="Compartir en WhatsApp" id="whatsapp-share"><i class="fab fa-whatsapp"></i></a>
     </div>
 
     <div class="descripcion-final">
       Esta página es parte de una vitrina digital para productos. Aquí puedes encontrar detalles, imágenes, videos y contactar al vendedor fácilmente.<br>
-      © 2023 Vitrina Digital. Todos los derechos reservados.
+      © <span id="current-year"></span> Vitrina Digital. Todos los derechos reservados.
     </div>
   </div>
 
@@ -411,82 +422,4 @@
 
   <!-- Schema.org para SEO -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "Pantalón Cargo Slim Fit",
-      "description": "Pantalón de estilo urbano con bolsillos laterales, ideal para invierno. Tela resistente y cómoda.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Marca del Producto"
-      },
-      "offers": {
-        "@type": "Offer",
-        "url": "URL_DE_LA_PAGINA",
-        "availability": "https://schema.org/InStock"
-      }
-    }
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-  <script>
-    // Lightbox configuration
-    lightbox.option({
-      'resizeDuration': 200,
-      'wrapAround': true,
-      'albumLabel': "Imagen %1 de %2"
-    });
-
-    // Mostrar loader mientras se cargan imágenes
-    document.addEventListener('DOMContentLoaded', function() {
-      const loader = document.getElementById('loader');
-      const images = document.querySelectorAll('img[loading="lazy"], video');
-      
-      let imagesToLoad = images.length;
-      
-      if (imagesToLoad === 0) {
-        loader.style.display = 'none';
-      } else {
-        loader.style.display = 'block';
-      }
-
-      function imageLoaded() {
-        imagesToLoad--;
-        if (imagesToLoad === 0) {
-          loader.style.display = 'none';
-        }
-      }
-
-      images.forEach(img => {
-        if (img.complete) {
-          imageLoaded();
-        } else {
-          img.addEventListener('load', imageLoaded);
-          img.addEventListener('error', imageLoaded); // En caso de error
-        }
-      });
-
-      // Deshabilitar atajos
-      function disableKeys(e) {
-        if ((e.ctrlKey && ['u', 's', 'c'].includes(e.key.toLowerCase())) || e.key === 'F12') {
-          e.preventDefault();
-          return false;
-        }
-      }
-
-      // Smooth scroll para navegación
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth'
-            });
-          }
-        });
-      });
-    });
-  </script>
-</body>
-</html>
+   
