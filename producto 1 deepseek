@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pantalón Cargo Slim Fit | Vitrina Digital</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pantalón cargo urbano slim fit para adulto. Tela resistente, ideal para invierno. Contacta al vendedor por WhatsApp.">
+  <meta name="keywords" content="pantalón cargo, moda urbana, ropa hombre, slim fit, invierno">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+  <style>
+    :root {
+      --bg-dark: #1e1e1e;
+      --bg-container: #2a2a2a;
+      --header-bg: #2c3e50;
+      --text-main: white;
+      --text-secondary: #ddd;
+      --whatsapp: #25D366;
+      --whatsapp-hover: #128C7E;
+      --button-bg: #3498db;
+      --button-hover: #2980b9;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      padding-top: 70px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--header-bg);
+      color: var(--text-main);
+      padding: 15px 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    header img {
+      height: 40px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    header img:hover {
+      transform: scale(1.05);
+    }
+
+    nav a {
+      color: var(--text-main);
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 5px 0;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--text-secondary);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--text-secondary);
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: var(--bg-container);
+      padding: 30px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      border-radius: 10px;
+    }
+
+    .img-principal {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .img-principal img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #444;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .img-principal img:hover {
+      transform: scale(1.03);
+      border-color: #666;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: var(--text-main);
+      font-size: 28px;
+    }
+
+    .atributos {
+      text-align: center;
+      margin-bottom: 15px;
+      font-weight: bold;
+      color: var(--text-secondary);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .atributos span {
+      padding: 5px 10px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+    }
+
+    .detalle {
+      text-align: center;
+      margin-bottom: 25px;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 16px;
+    }
+
+    .whatsapp {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .whatsapp a {
+      background-color: var(--whatsapp);
+      color: white;
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .whatsapp a:hover {
+      background-color: var(--whatsapp-hover);
+      transform: translateY(-2px);
+    }
+
+    .tags {
+      text-align: center;
+      color: #aaa;
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tags span {
+      padding: 4px 12px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      font-style: italic;
+    }
+
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .galeria a {
+      display: block;
+      transition: transform 0.3s;
+    }
+
+    .galeria a:hover {
+      transform: scale(1.03);
+    }
+
+    .galeria img,
+    .galeria video {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+      transition: box-shadow 0.3s;
+    }
+
+    .galeria img:hover,
+    .galeria video:hover {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .publicar {
+      text-align: center;
+      margin: 40px 0 20px;
+    }
+
+    .publicar a {
+      background-color: var(--button-bg);
+      color: white;
+      padding: 14px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .publicar a:hover {
+      background-color: var(--button-hover);
+      transform: translateY(-2px);
+    }
+
+    .descripcion-final {
+      text-align: center;
+      font-size: 14px;
+      color: #999;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+    }
+
+    .loader {
+      display: none;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .social-share {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .social-share a {
+      color: white;
+      background: #444;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .social-share a:hover {
+      transform: scale(1.1);
+      background: #555;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 10px;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      nav a {
+        margin: 0 10px;
+      }
+
+      .container {
+        padding: 20px 15px;
+      }
+
+      .galeria img,
+      .galeria video {
+        width: 120px;
+        height: 120px;
+      }
+    }
+  </style>
+</head>
+<body oncontextmenu="return false" onkeydown="return disableKeys(event)">
+  
+  <header>
+    <img src="logo.png" alt="Logo de la tienda" onclick="window.location.href='index.html'">
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="#buscar">Buscar por Tag</a>
+      <a href="#contacto">Publica / Contacto</a>
+      <a href="#legal">Información Legal</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="img-principal">
+      <img src="pantalon-principal.jpg" alt="Pantalón cargo slim fit de color negro, vista frontal" loading="lazy">
+    </div>
+
+    <h2>Pantalón Cargo Slim Fit</h2>
+
+    <div class="atributos">
+      <span>Edad: Adulto</span>
+      <span>Altura: 1.75m</span>
+      <span>Medidas: 32-34</span>
+    </div>
+
+    <div class="detalle">
+      Pantalón de estilo urbano con bolsillos laterales funcionales, ideal para el invierno. Fabricado con tela resistente y cómoda que permite libertad de movimiento. Costuras reforzadas para mayor durabilidad.
+    </div>
+
+    <div class="whatsapp">
+      <a href="https://wa.me/56912345678?text=Hola,%20me%20interesa%20el%20pantalón%20cargo%20slim%20fit" target="_blank" aria-label="Contactar por WhatsApp">Contactar por WhatsApp</a>
+    </div>
+
+    <div class="tags">
+      <span>#cargo</span>
+      <span>#urbano</span>
+      <span>#slimfit</span>
+      <span>#invierno</span>
+    </div>
+
+    <div class="galeria">
+      <a href="pantalon1.jpg" data-lightbox="galeria" data-title="Vista lateral del pantalón cargo">
+        <img src="pantalon1.jpg" alt="Pantalón cargo vista lateral" loading="lazy">
+      </a>
+      <a href="pantalon2.jpg" data-lightbox="galeria" data-title="Vista trasera del pantalón cargo">
+        <img src="pantalon2.jpg" alt="Pantalón cargo vista trasera" loading="lazy">
+      </a>
+      <a href="pantalon-video.mp4" data-lightbox="galeria" data-title="Video demostrativo del pantalón cargo">
+        <video src="pantalon-video.mp4" muted controls preload="metadata" poster="video-poster.jpg" alt="Video mostrando los detalles del pantalón"></video>
+      </a>
+    </div>
+
+    <div class="publicar">
+      <a href="https://wa.me/56912345678?text=Hola,%20quiero%20publicar%20mi%20producto" aria-label="Publicar mi producto">Publicar mi producto</a>
+    </div>
+
+    <div class="social-share">
+      <a href="https://www.facebook.com/sharer/sharer.php?u=URL_PAGINA" aria-label="Compartir en Facebook">f</a>
+      <a href="https://twitter.com/intent/tweet?text=Mira%20este%20pantalón%20cargo&url=URL_PAGINA" aria-label="Compartir en Twitter">t</a>
+      <a href="whatsapp://send?text=Mira%20este%20pantalón%20cargo:%20URL_PAGINA" aria-label="Compartir en WhatsApp">w</a>
+    </div>
+
+    <div class="descripcion-final">
+      Esta página es parte de una vitrina digital para productos. Aquí puedes encontrar detalles, imágenes, videos y contactar al vendedor fácilmente.<br>
+      © 2023 Vitrina Digital. Todos los derechos reservados.
+    </div>
+  </div>
+
+  <div class="loader" id="loader">
+    <p>Cargando contenido...</p>
+  </div>
+
+  <!-- Schema.org para SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Pantalón Cargo Slim Fit",
+      "description": "Pantalón de estilo urbano con bolsillos laterales, ideal para invierno. Tela resistente y cómoda.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Marca del Producto"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "URL_DE_LA_PAGINA",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+  <script>
+    // Lightbox configuration
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true,
+      'albumLabel': "Imagen %1 de %2"
+    });
+
+    // Mostrar loader mientras se cargan imágenes
+    document.addEventListener('DOMContentLoaded', function() {
+      const loader = document.getElementById('loader');
+      const images = document.querySelectorAll('img[loading="lazy"], video');
+      
+      let imagesToLoad = images.length;
+      
+      if (imagesToLoad === 0) {
+        loader.style.display = 'none';
+      } else {
+        loader.style.display = 'block';
+      }
+
+      function imageLoaded() {
+        imagesToLoad--;
+        if (imagesToLoad === 0) {
+          loader.style.display = 'none';
+        }
+      }
+
+      images.forEach(img => {
+        if (img.complete) {
+          imageLoaded();
+        } else {
+          img.addEventListener('load', imageLoaded);
+          img.addEventListener('error', imageLoaded); // En caso de error
+        }
+      });
+
+      // Deshabilitar atajos
+      function disableKeys(e) {
+        if ((e.ctrlKey && ['u', 's', 'c'].includes(e.key.toLowerCase())) || e.key === 'F12') {
+          e.preventDefault();
+          return false;
+        }
+      }
+
+      // Smooth scroll para navegación
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
