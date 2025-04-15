@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Vitrina Digital | Productos Destacados</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vitrina digital de productos. Encuentra lo mejor en moda, tecnología y más. Contacta directamente con los vendedores.">
+  <meta name="keywords" content="vitrina digital, productos, compras, moda, tecnología">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-dark: #1e1e1e;
+      --bg-container: #2a2a2a;
+      --header-bg: #2c3e50;
+      --text-main: white;
+      --text-secondary: #ddd;
+      --whatsapp: #25D366;
+      --whatsapp-hover: #128C7E;
+      --button-bg: #3498db;
+      --button-hover: #2980b9;
+      --call-blue: #128C7E;
+      --call-blue-hover: #075E54;
+      --card-bg: #333;
+      --card-hover: #3d3d3d;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      padding-top: 70px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--header-bg);
+      color: var(--text-main);
+      padding: 15px 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    header img {
+      height: 40px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    header img:hover {
+      transform: scale(1.05);
+    }
+
+    nav a {
+      color: var(--text-main);
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 5px 0;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--text-secondary);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--text-secondary);
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 80px 20px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .search-bar {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 30px 0 0 30px;
+      font-size: 1rem;
+    }
+
+    .search-bar button {
+      background-color: var(--button-bg);
+      color: white;
+      border: none;
+      padding: 0 25px;
+      border-radius: 0 30px 30px 0;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .search-bar button:hover {
+      background-color: var(--button-hover);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .product-card {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      background-color: var(--card-hover);
+    }
+
+    .product-image {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.05);
+    }
+
+    .product-info {
+      padding: 15px;
+    }
+
+    .product-title {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      height: 40px;
+      overflow: hidden;
+    }
+
+    .product-price {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #4CAF50;
+      margin-bottom: 15px;
+    }
+
+    .product-description {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      height: 60px;
+      overflow: hidden;
+    }
+
+    .product-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .btn-details, .btn-whatsapp {
+      flex: 1;
+      padding: 8px 0;
+      text-align: center;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .btn-details {
+      background-color: #444;
+      color: white;
+    }
+
+    .btn-details:hover {
+      background-color: #555;
+    }
+
+    .btn-whatsapp {
+      background-color: var(--whatsapp);
+      color: white;
+    }
+
+    .btn-whatsapp:hover {
+      background-color: var(--whatsapp-hover);
+    }
+
+    .categories {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .category-btn {
+      padding: 8px 20px;
+      background-color: #444;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .category-btn.active, .category-btn:hover {
+      background-color: var(--button-bg);
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+      gap: 10px;
+    }
+
+    .pagination a {
+      padding: 8px 15px;
+      background-color: #444;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .pagination a.active, .pagination a:hover {
+      background-color: var(--button-bg);
+    }
+
+    footer {
+      background-color: var(--header-bg);
+      color: var(--text-main);
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 50px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      color: var(--text-main);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--text-secondary);
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .social-icons a {
+      color: white;
+      background: #444;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.1);
+      background: #555;
+    }
+
+    .copyright {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 10px;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      nav a {
+        margin: 0 10px;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .search-bar {
+        flex-direction: column;
+      }
+
+      .search-bar input {
+        border-radius: 30px;
+        margin-bottom: 10px;
+      }
+
+      .search-bar button {
+        border-radius: 30px;
+        padding: 12px;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body oncontextmenu="return false" onkeydown="return disableKeys(event)">
+  
+  <header>
+    <img src="logo.png" alt="Logo de la tienda" onclick="window.location.href='index.html'">
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="#categorias">Categorías</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Descubre los mejores productos</h1>
+    <p>Conectamos compradores y vendedores directamente. Encuentra lo que necesitas o publica tus productos fácilmente.</p>
+    <div class="search-bar">
+      <input type="text" placeholder="Buscar productos...">
+      <button><i class="fas fa-search"></i> Buscar</button>
+    </div>
+  </section>
+
+  <div class="container">
+    <h2 id="categorias">Categorías destacadas</h2>
+    <div class="categories">
+      <button class="category-btn active">Todos</button>
+      <button class="category-btn">Moda</button>
+      <button class="category-btn">Tecnología</button>
+      <button class="category-btn">Hogar</button>
+      <button class="category-btn">Deportes</button>
+      <button class="category-btn">Otros</button>
+    </div>
+
+    <h2>Productos destacados</h2>
+    <div class="products-grid" id="products-container">
+      <!-- Productos se cargarán dinámicamente con JavaScript -->
+    </div>
+
+    <div class="pagination">
+      <a href="#"><i class="fas fa-chevron-left"></i></a>
+      <a href="#" class="active">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#"><i class="fas fa-chevron-right"></i></a>
+    </div>
+  </div>
+
+  <section id="como-funciona" style="background-color: #333; padding: 50px 20px; margin-top: 50px;">
+    <div style="max-width: 1000px; margin: 0 auto;">
+      <h2 style="text-align: center; margin-bottom: 30px;">¿Cómo funciona nuestra vitrina digital?</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+        <div style="text-align: center;">
+          <div style="background-color: #444; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem;">
+            <i class="fas fa-user-plus"></i>
+          </div>
+          <h3>1. Publica tu producto</h3>
+          <p>Completa el formulario con los detalles de tu producto y fotos de calidad.</p>
+        </div>
+        <div style="text-align: center;">
+          <div style="background-color: #444; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem;">
+            <i class="fas fa-eye"></i>
+          </div>
+          <h3>2. Aparece en la vitrina</h3>
+          <p>Tu producto será visible para todos los usuarios de nuestra plataforma.</p>
+        </div>
+        <div style="text-align: center;">
+          <div style="background-color: #444; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem;">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <h3>3. Recibe consultas</h3>
+          <p>Los compradores te contactarán directamente por WhatsApp para negociar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contacto">
+    <div class="footer-links">
+      <a href="#">Términos de servicio</a>
+      <a href="#">Política de privacidad</a>
+      <a href="#">Preguntas frecuentes</a>
+      <a href="#">Sobre nosotros</a>
+    </div>
+    <div class="social-icons">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <div class="copyright">
+      © <span id="current-year"></span> Vitrina Digital. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <script>
+    // Datos de productos de ejemplo
+    const products = [
+      {
+        id: 1,
+        title: "Pantalón Cargo Slim Fit",
+        price: "$29.990",
+        description: "Pantalón urbano con bolsillos funcionales, tela resistente ideal para invierno.",
+        image: "pantalon-principal.jpg",
+        category: "Moda"
+      },
+      {
+        id: 2,
+        title: "Zapatillas Running Ultra",
+        price: "$59.990",
+        description: "Zapatillas deportivas con amortiguación de última generación para máximo confort.",
+        image: "zapatillas.jpg",
+        category: "Deportes"
+      },
+      {
+        id: 3,
+        title: "Smartphone X10 Pro",
+        price: "$399.990",
+        description: "Último modelo con cámara de 108MP y batería de 5000mAh. 128GB almacenamiento.",
+        image: "smartphone.jpg",
+        category: "Tecnología"
+      },
+      {
+        id: 4,
+        title: "Juego de Sábanas Premium",
+        price: "$34.990",
+        description: "Juego de sábanas 100% algodón egipcio, tamaño king. Varios colores disponibles.",
+        image: "sabanas.jpg",
+        category: "Hogar"
+      },
+      {
+        id: 5,
+        title: "Reloj Inteligente FitPro",
+        price: "$89.990",
+        description: "Monitor de actividad, frecuencia cardíaca y oxígeno en sangre. Resistente al agua.",
+        image: "smartwatch.jpg",
+        category: "Tecnología"
+      },
+      {
+        id: 6,
+        title: "Mochila Antirrobo",
+        price: "$45.990",
+        description: "Mochila con compartimentos seguros y diseño ergonómico. Ideal para viajes.",
+        image: "mochila.jpg",
+        category: "Otros"
+      }
+    ];
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mostrar productos
+      const productsContainer = document.getElementById('products-container');
+      
+      products.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        productCard.innerHTML = `
+          <a href="producto.html?id=${product.id}">
+            <div class="product-image">
+              <img src="${product.image}" alt="${product.title}" loading="lazy">
+            </div>
+            <div class="product-info">
+              <h3 class="product-title">${product.title}</h3>
+              <div class="product-price">${product.price}</div>
+              <p class="product-description">${product.description}</p>
+              <div class="product-actions">
+                <a href="producto.html?id=${product.id}" class="btn-details">
+                  <i class="fas fa-info-circle"></i> Detalles
+                </a>
+                <a href="https://wa.me/56912345678?text=Hola%20${encodeURIComponent(product.title)},%20vi%20tu%20aviso%20en%20Vitrina%20Digital%20y%20me%20gustaría%20saber%20más,%20gracias." class="btn-whatsapp" target="_blank">
+                  <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+              </div>
+            </div>
+          </a>
+        `;
+        productsContainer.appendChild(productCard);
+      });
+
+      // Año actual en footer
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+
+      // Filtrado por categorías
+      const categoryBtns = document.querySelectorAll('.category-btn');
+      categoryBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          categoryBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          
+          const category = this.textContent;
+          const productCards = document.querySelectorAll('.product-card');
+          
+          productCards.forEach(card => {
+            const productId = parseInt(card.querySelector('a').href.split('id=')[1]);
+            const product = products.find(p => p.id === productId);
+            
+            if (category === 'Todos' || product.category === category) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Deshabilitar atajos
+      function disableKeys(e) {
+        if ((e.ctrlKey && ['u', 's', 'c'].includes(e.key.toLowerCase())) || e.key === 'F12') {
+          e.preventDefault();
+          return false;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
