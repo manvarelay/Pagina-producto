@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Vitrina Digital | Catálogo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catálogo digital de productos. Explora ropa urbana, accesorios y más. Contacta al vendedor por WhatsApp.">
+  <meta name="keywords" content="catálogo, ropa, urbano, ecommerce, vitrina digital">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-dark: #1e1e1e;
+      --bg-container: #2a2a2a;
+      --header-bg: #2c3e50;
+      --text-main: white;
+      --text-secondary: #ddd;
+      --whatsapp: #25D366;
+      --whatsapp-hover: #128C7E;
+      --button-bg: #3498db;
+      --button-hover: #2980b9;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      padding-top: 70px;
+    }
+
+    header {
+      background-color: var(--header-bg);
+      color: var(--text-main);
+      padding: 15px 20px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    header img {
+      height: 40px;
+      cursor: pointer;
+    }
+
+    nav a {
+      color: var(--text-main);
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: var(--text-secondary);
+    }
+
+    .catalogo {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      padding: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .producto {
+      background-color: var(--bg-container);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s;
+    }
+
+    .producto:hover {
+      transform: translateY(-5px);
+    }
+
+    .producto img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .info {
+      padding: 15px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .info h3 {
+      margin: 10px 0;
+      font-size: 20px;
+      text-align: center;
+      color: var(--text-main);
+    }
+
+    .atributos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--text-secondary);
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .atributos span {
+      background-color: rgba(255,255,255,0.1);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .resumen {
+      font-size: 14px;
+      text-align: center;
+      color: var(--text-secondary);
+      margin-bottom: 15px;
+    }
+
+    .botones {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    .botones a {
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: white;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-ver {
+      background-color: var(--button-bg);
+    }
+
+    .btn-ver:hover {
+      background-color: var(--button-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-wsp {
+      background-color: var(--whatsapp);
+    }
+
+    .btn-wsp:hover {
+      background-color: var(--whatsapp-hover);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 600px) {
+      .botones {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="logo.png" alt="Logo" onclick="location.href='index.html'">
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="#buscar">Buscar por Tag</a>
+      <a href="#contacto">Publica / Contacto</a>
+      <a href="#legal">Información Legal</a>
+    </nav>
+  </header>
+
+  <section class="catalogo">
+    <!-- Producto 1 -->
+    <div class="producto">
+      <img src="pantalon-principal.jpg" alt="Pantalón Cargo Slim Fit">
+      <div class="info">
+        <h3>Pantalón Cargo Slim Fit</h3>
+        <div class="atributos">
+          <span>Adulto</span>
+          <span>1.75m</span>
+          <span>32-34</span>
+        </div>
+        <div class="resumen">
+          Pantalón urbano con tela resistente, ideal para invierno.
+        </div>
+        <div class="botones">
+          <a href="detalle-pantalon.html" class="btn-ver"><i class="fas fa-eye"></i> Ver más</a>
+          <a href="#" class="btn-wsp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Puedes duplicar este bloque para más productos -->
+    <!-- Producto 2 -->
+    <div class="producto">
+      <img src="poleron-principal.jpg" alt="Polerón Oversize Negro">
+      <div class="info">
+        <h3>Polerón Oversize Negro</h3>
+        <div class="atributos">
+          <span>Unisex</span>
+          <span>1.70m</span>
+          <span>Talla L</span>
+        </div>
+        <div class="resumen">
+          Polerón oversize cómodo y abrigado. Estilo urbano moderno.
+        </div>
+        <div class="botones">
+          <a href="#" class="btn-ver"><i class="fas fa-eye"></i> Ver más</a>
+          <a href="#" class="btn-wsp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Producto 3 (ejemplo) -->
+    <div class="producto">
+      <img src="zapatilla.jpg" alt="Zapatilla Urbana Blanca">
+      <div class="info">
+        <h3>Zapatilla Urbana Blanca</h3>
+        <div class="atributos">
+          <span>Adulto</span>
+          <span>1.80m</span>
+          <span>42 EUR</span>
+        </div>
+        <div class="resumen">
+          Zapatillas con diseño limpio, suela antideslizante y livianas.
+        </div>
+        <div class="botones">
+          <a href="#" class="btn-ver"><i class="fas fa-eye"></i> Ver más</a>
+          <a href="#" class="btn-wsp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
