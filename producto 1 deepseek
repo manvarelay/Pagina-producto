@@ -18,6 +18,8 @@
       --whatsapp-hover: #128C7E;
       --button-bg: #3498db;
       --button-hover: #2980b9;
+      --call-blue: #128C7E; /* Color azul para el botón de llamada */
+      --call-blue-hover: #075E54; /* Color azul más oscuro para hover */
     }
 
     body {
@@ -148,13 +150,15 @@
       font-size: 16px;
     }
 
-    .whatsapp {
-      text-align: center;
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
       margin-bottom: 25px;
+      flex-wrap: wrap;
     }
 
-    .whatsapp a {
-      background-color: var(--whatsapp);
+    .whatsapp-btn, .call-btn {
       color: white;
       padding: 12px 25px;
       border-radius: 30px;
@@ -165,8 +169,21 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
-    .whatsapp a:hover {
+    .whatsapp-btn {
+      background-color: var(--whatsapp);
+    }
+
+    .whatsapp-btn:hover {
       background-color: var(--whatsapp-hover);
+      transform: translateY(-2px);
+    }
+
+    .call-btn {
+      background-color: var(--call-blue);
+    }
+
+    .call-btn:hover {
+      background-color: var(--call-blue-hover);
       transform: translateY(-2px);
     }
 
@@ -305,6 +322,17 @@
         width: 120px;
         height: 120px;
       }
+      
+      .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .whatsapp-btn, .call-btn {
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -337,8 +365,9 @@
       Pantalón de estilo urbano con bolsillos laterales funcionales, ideal para el invierno. Fabricado con tela resistente y cómoda que permite libertad de movimiento. Costuras reforzadas para mayor durabilidad.
     </div>
 
-    <div class="whatsapp">
-      <a href="https://wa.me/56912345678?text=Hola,%20me%20interesa%20el%20pantalón%20cargo%20slim%20fit" target="_blank" aria-label="Contactar por WhatsApp">Contactar por WhatsApp</a>
+    <div class="contact-buttons">
+      <a href="https://wa.me/56912345678?text=Hola,%20me%20interesa%20el%20pantalón%20cargo%20slim%20fit" class="whatsapp-btn" target="_blank" aria-label="Contactar por WhatsApp">Contactar por WhatsApp</a>
+      <a href="https://wa.me/56912345678?text=Hola,%20necesito%20que%20me%20llames%20por%20teléfono" class="call-btn" target="_blank" aria-label="Llamar por WhatsApp">Llamame</a>
     </div>
 
     <div class="tags">
