@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vitrina Digital</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, sans-serif; background: #f7f7f7; }
+
+    /* Bloqueo de selección de texto */
+    body {
+      -webkit-user-select: none;  /* Safari */
+      -moz-user-select: none;     /* Firefox */
+      -ms-user-select: none;      /* Internet Explorer/Edge */
+      user-select: none;          /* General */
+    }
+
+    /* Desactivar clic derecho */
+    body {
+      -webkit-touch-callout: none; /* Safari */
+      -webkit-user-select: none; /* Safari */
+      -khtml-user-select: none; /* Safari */
+      -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer */
+      user-select: none; /* General */
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .logo img {
+      height: 50px;
+    }
+
+    /* Banner de navegación */
+    .banner {
+      background: #ff4081;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0.8rem;
+    }
+    .banner a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    /* Filtro por Tag (solo en el banner) */
+    .filter-container {
+      display: flex;
+      justify-content: center;
+      padding: 1rem;
+      background-color: #fff;
+      border-bottom: 2px solid #ddd;
+    }
+    .filter-container input {
+      padding: 0.5rem;
+      font-size: 1rem;
+      width: 300px;
+      border-radius: 20px;
+      border: 1px solid #ddd;
+    }
+
+    /* Galería */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .product-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      position: relative;
+    }
+
+    /* Contenedor de botones (centrados sobre la imagen) */
+    .actions {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      gap: 1rem;
+      z-index: 10;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .actions a {
+      padding: 0.5rem;
+      text-decoration: none;
+      color: white;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 0.8rem;
+    }
+    .ver-mas { background-color: #333; }
+    .whatsapp { background-color: #25D366; }
+
+    /* Información del producto */
+    .product-info {
+      padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .product-info h3 {
+      margin: 0 0 0.5rem 0;
+    }
+    .product-info p {
+      margin: 0.2rem 0;
+      color: #555;
+    }
+
+    /* Botón publicate al final */
+    .publicate-bottom {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0 1rem;
+    }
+    .publicate-bottom a {
+      background: #ff4081;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Elite Escort"> <!-- Aquí debes colocar la URL de tu logo -->
+    </div>
+  </header>
+
+  <!-- Banner de navegación -->
+  <nav class="banner">
+    <a href="#" onclick="mostrarProductos();">Inicio</a>
+    <!-- <a href="#buscarPorTag" onclick="filtrarPorTag();">Búsqueda</a>
+    <a href="contacto.html">Publicate</a>
+  </nav>
+
+  <!-- Filtro por Tag (solo en el banner) -->
+  <div class="filter-container">
+    <input type="text" id="tagInput" placeholder="Escribe un servicio para buscar..." oninput="filtrarPorTag()" />
+  </div>
+
+  <!-- Galería -->
+  <main>
+    <div class="gallery" id="productGallery"></div>
+  </main>
+
+  <!-- Botón publícate aquí -->
+  <div class="publicate-bottom">
+    <a href="contacto.html">📢 Eres Escort: Publícate aquí</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Elite Escort Chile. Esta plataforma no ofrece servicios directamente, solo exhibe información pública. Si encuentras contenido inapropiado, por favor contáctanos.
+  </footer>
+
+  <!-- Script -->
+  <script>
+    const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQzg76n4MmvSn9EyX01nG4CRVzMXC7g1-3AohooupKTIhFThrntKSFuiIwk8RqMd0LNPERzeaRQb5-m/pub?output=csv";
+    const IMAGES_FOLDER = "imagenes/";
+
+    let productos = [];  // Contendrá todos los productos cargados
+
+    async function cargarProductos() {
+      const res = await fetch(CSV_URL);
+      const data = await res.text();
+      const filas = data.trim().split("\n").map(f => f.split(","));
+      const headers = filas.shift().map(h => h.trim());
+      productos = filas.map(f => {
+        const obj = {};
+        headers.forEach((h, i) => obj[h] = f[i]?.trim());
+        return obj;
+      }).filter(p => p.Visible?.toLowerCase() === "si");  // Filtrar solo los productos visibles
+
+      mostrarProductos(); // Muestra todos los productos visibles
+    }
+
+    function mostrarProductos() {
+      const contenedor = document.getElementById("productGallery");
+      contenedor.innerHTML = ""; // Limpiar productos antes de mostrar
+      productos.forEach(prod => {
+        const div = document.createElement("div");
+        div.className = "product-card";
+
+        const imgSrc = IMAGES_FOLDER + (prod.ImagenPreview || "placeholder.jpg");
+        div.innerHTML = `
+          <img src="${imgSrc}" alt="${prod["Alt Imagen"] || prod.Nombre}">
+          <div class="actions">
+            <a href="${prod.LinkProducto}" class="ver-mas">Ver más</a>
+            <a href="https://wa.me/56${prod.WhatsApp}?text=${encodeURIComponent(`Hola ${prod.Nombre}, te vi en EliteEscort.cl y me gustaría saber tus servicios y valores.`)}" target="_blank" class="whatsapp">WhatsApp</a>
+          </div>
+          <div class="product-info">
+            <h3>${prod.Nombre}</h3>
+            <p>${prod.Sexo}, ${prod.Edad} años</p>
+            <p>${prod.Ciudad}</p>
+          </div>
+        `;
+        contenedor.appendChild(div);
+      });
+    }
+
+    // Función para filtrar productos por tag
+    function filtrarPorTag() {
+      // Obtener el valor del campo de entrada de búsqueda
+      const tagInput = document.getElementById("tagInput").value.toLowerCase();
+
+      // Filtrar los productos por el tag ingresado
+      const productosFiltrados = productos.filter(prod => {
+        // Comprobar si los tags del producto contienen el tag ingresado
+        if (prod.Tags) {
+          // Dividir los tags del producto por el delimitador ';' (o '|') y convertirlo en minúsculas para la búsqueda
+          const tagsProducto = prod.Tags.toLowerCase().split(';').map(tag => tag.trim());
+          return tagsProducto.some(tag => tag.includes(tagInput));  // Buscar si el tag ingresado existe en alguno de los tags del producto
+        }
+        return false;
+      });
+
+      // Mostrar los productos filtrados
+      mostrarProductos(productosFiltrados);
+    }
+
+    cargarProductos();
+
+    // Bloqueo de clic derecho
+    document.addEventListener("contextmenu", function(e) {
+      e.preventDefault();
+    });
+  </script>
+
+</body>
+</html>
