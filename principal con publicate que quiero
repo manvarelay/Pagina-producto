@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Catálogo | Vitrina Digital</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f7f7f7;
+      color: #333;
+    }
+
+    /* Header con logo llamativo */
+    header {
+      background: #111;
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .logo span {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 1rem;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ddd;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .image-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .product-actions-overlay {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .product-actions-overlay a {
+      flex: 1;
+      margin: 0 0.25rem;
+      padding: 0.4rem;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    .product-actions-overlay .ver-mas {
+      background: #333;
+    }
+
+    .product-actions-overlay .ver-mas:hover {
+      background: #555;
+    }
+
+    .product-actions-overlay .whatsapp-btn {
+      background: #25D366;
+    }
+
+    .product-actions-overlay .whatsapp-btn:hover {
+      background: #1ebe5d;
+    }
+
+    .product-content {
+      padding: 1rem;
+    }
+
+    .product-info {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .product-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .product-meta {
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    /* Botón "Publícate con nosotros" llamativo */
+    .publicate-section {
+      text-align: center;
+      margin: 2.5rem auto;
+    }
+
+    .publicate-btn {
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: inline-block;
+    }
+
+    .publicate-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+
+    footer {
+      text-align: center;
+      background: #111;
+      color: #fff;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    @media screen and (max-width: 600px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .product-card img {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header con logo y navegación -->
+  <header>
+    <div class="logo">
+      <img src="https://via.placeholder.com/40x40?text=Logo" alt="Logo Vitrina">
+      <span>Vitrina Digital</span>
+    </div>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="#buscar">Buscar</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- Galería de productos -->
+  <main>
+    <section class="gallery">
+      <!-- Producto 1 -->
+      <div class="product-card">
+        <div class="image-wrapper">
+          <img src="https://via.placeholder.com/400x300?text=Producto+1" alt="Camila">
+          <div class="product-actions-overlay">
+            <a href="producto-1.html" class="ver-mas">Ver más</a>
+            <a href="#" class="whatsapp-btn" onclick="contactarPorWhatsapp('Camila','56911112222')">WhatsApp</a>
+          </div>
+        </div>
+        <div class="product-content">
+          <div class="product-info">
+            <span class="product-name">Camila</span>
+            <span class="product-meta">, Femenino, 23</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Producto 2 -->
+      <div class="product-card">
+        <div class="image-wrapper">
+          <img src="https://via.placeholder.com/400x300?text=Producto+2" alt="Carlos">
+          <div class="product-actions-overlay">
+            <a href="producto-2.html" class="ver-mas">Ver más</a>
+            <a href="#" class="whatsapp-btn" onclick="contactarPorWhatsapp('Carlos','56933334444')">WhatsApp</a>
+          </div>
+        </div>
+        <div class="product-content">
+          <div class="product-info">
+            <span class="product-name">Carlos</span>
+            <span class="product-meta">, Masculino, 30</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Producto 3 -->
+      <div class="product-card">
+        <div class="image-wrapper">
+          <img src="https://via.placeholder.com/400x300?text=Producto+3" alt="Laura">
+          <div class="product-actions-overlay">
+            <a href="producto-3.html" class="ver-mas">Ver más</a>
+            <a href="#" class="whatsapp-btn" onclick="contactarPorWhatsapp('Laura','56977778888')">WhatsApp</a>
+          </div>
+        </div>
+        <div class="product-content">
+          <div class="product-info">
+            <span class="product-name">Laura</span>
+            <span class="product-meta">, Femenino, 28</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Agrega más productos aquí -->
+    </section>
+  </main>
+
+  <!-- Botón Publícate -->
+  <section class="publicate-section">
+    <a href="#contacto" class="publicate-btn">📢 Publícate con nosotros</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Vitrina Digital. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    function contactarPorWhatsapp(nombreProducto, numeroVendedor) {
+      const mensaje = `Hola ${nombreProducto}, te vi en Mipagina.com y necesito información.`;
+      const url = `https://wa.me/${numeroVendedor}?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
